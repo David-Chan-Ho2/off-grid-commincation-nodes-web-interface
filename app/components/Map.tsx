@@ -16,14 +16,10 @@ const customIcon: Icon = new L.Icon({
 
 export default function Map() {
   const [uncc, setUncc] = useState<[number, number]>([35.3071, -80.7357])
-
   const [markers, setMarkers] = useState<IMarker[]>([
-    {id: 1, label: "A", position: [35.3071, -80.7357], neighbors: []}, 
-    {id: 2, label: "B", position: [35.3070, -80.7352], neighbors: [
-      {id: 1, label: "A", position: [35.3071, -80.7357], neighbors: []},
-      {id: 3, label: "C", position: [35.3074, -80.7358], neighbors: []}
-    ]}, 
-    {id: 3, label: "C", position: [35.3074, -80.7358], neighbors: []}, 
+    {id: 1, label: "Woodward Hall", position: [35.3071, -80.7357]}, 
+    {id: 2, label: "Mebane Hall", position: [35.3073, -80.734]}, 
+    {id: 3, label: "University Recreation Center", position: [35.3081, -80.7355]}
   ]);
 
   return (
@@ -34,17 +30,8 @@ export default function Map() {
             <Marker position={marker.position} icon={customIcon}>
                 <Popup>{marker.label}</Popup>
             </Marker>
-            {marker.neighbors?.map((neighbor, index) => (
-              <SVGOverlay key={index} attributes={{ stroke: 'black' }} bounds={[
-                marker.position,
-                neighbor.position
-              ]}>
-                <line x1="0" y1="0" x2="100%" y2="100%" strokeWidth={2} />
-            </SVGOverlay>
-            ))}
             </div>
         ))}
-      
     </MapContainer>
   );
 }
