@@ -4,7 +4,8 @@ import { useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import useSWR from "swr";
 
-import { ILocation } from "@/types/marker.types";
+import { ILocation } from "@/app/types/marker.types";
+import Config from "../config/config";
 import { CustomIcon } from "./Icon";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -14,13 +15,13 @@ export default function Map() {
     "/api/locations",
     fetcher,
   );
-  const [uncc, setUncc] = useState<[number, number]>([35.3071, -80.7357]);
+  const [uncc, setUncc] = useState<[number, number]>(Config.DEFAULT_CENTER);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error</div>;
 
   return (
-    <MapContainer center={uncc} zoom={16} className="map">
+    <MapContainer center={uncc} zoom={16} className="h-screen">
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {data?.map((location) => (
         <div key={location.label}>

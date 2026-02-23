@@ -1,4 +1,4 @@
-import { ILocation } from "@/types/marker.types"
+import { ILocation } from "@/app/types/marker.types"
 import { NextResponse } from "next/server"
 
 export async function GET() {
