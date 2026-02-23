@@ -1,18 +1,9 @@
 "use client";
 
-import L, { Icon } from "leaflet"
-import { useState } from 'react'
-import { MapContainer, Marker, Popup, SVGOverlay, TileLayer } from "react-leaflet"
-
 import { IMarker } from '@/types/marker.types'
-
-const customIcon: Icon = new L.Icon({
-  iconUrl: '/icon.png',
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32],
-  className: 'custom-circle-marker'
-});
+import { useState } from 'react'
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
+import { CustomIcon } from './Icon'
 
 export default function Map() {
   const [uncc, setUncc] = useState<[number, number]>([35.3071, -80.7357])
@@ -27,7 +18,7 @@ export default function Map() {
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {markers.map((marker) => (
             <div key={marker.label}>
-            <Marker position={marker.position} icon={customIcon}>
+            <Marker position={marker.position} icon={CustomIcon}>
                 <Popup>{marker.label}</Popup>
             </Marker>
             </div>
