@@ -1,5 +1,7 @@
 import 'leaflet/dist/leaflet.css'
+import 'react-loading-skeleton/dist/skeleton.css'
 import './globals.css';
+
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 

@@ -5,5 +5,5 @@ export const CustomIcon: Icon = new L.Icon({
   iconSize: [32, 32],
   iconAnchor: [16, 32],
   popupAnchor: [0, -32],
-  className: "w-24 h-24 border rounded-full",
+  className: "border rounded-full",
 });
